@@ -1137,26 +1137,25 @@ let musicStarted = false;
 
 function startMusic() {
 
-    if (musicStarted) {
+    if (!music.paused) {
         return;
     }
 
+    music.volume = 0.8;
 
     music.play()
-
         .then(() => {
 
             musicStarted = true;
 
-            musicButton.innerHTML =
-                "❚❚";
+            musicButton.innerHTML = "❚❚";
 
         })
-
-        .catch(() => {
+        .catch((error) => {
 
             console.log(
-                "Browser memblokir autoplay."
+                "Musik belum bisa diputar:",
+                error
             );
 
         });
@@ -1396,6 +1395,11 @@ document.addEventListener(
     }
 );
 
+document.addEventListener("click", function () {
+    startMusic();
+}, { once: true });
+
+  
 </script>
 
 </body>
