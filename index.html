@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Cantiik ♡</title>
+
+<style>
+  
+  .choice-slide.active ~ .next {
+    display: none;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #080707;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.78)
+        ),
+        url("foto1.jpg") center/cover no-repeat;
+
+    transform: scale(1.05);
+
+    filter: blur(2px);
+
+    transition:
+        background-image 1s ease,
+        opacity .8s ease;
+
+    z-index: -2;
+}
+
+.background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 15%,
+            rgba(0,0,0,.75) 100%
+        );
+}
+
+/* =========================
+   GRAIN
+========================= */
+
+.grain {
+    position: fixed;
+    inset: 0;
+
+    opacity: .07;
+
+    pointer-events: none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    z-index: 50;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px)
+        scale(.98);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.content {
+    width: min(650px, 100%);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.eyebrow {
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #d5b8b8;
+
+    margin-bottom: 25px;
+}
+
+h1,
+h2 {
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-weight: 400;
+}
+
+h1 {
+    font-size:
+        clamp(70px, 18vw, 130px);
+
+    line-height: .8;
+
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size:
+        clamp(45px, 10vw, 80px);
+
+    line-height: .95;
+
+    margin-bottom: 30px;
+}
+
+.text {
+    font-size: 14px;
+
+    line-height: 2;
+
+    color: #ded8d8;
+}
+
+.big-text {
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size:
+        clamp(35px, 8vw, 65px);
+
+    line-height: 1.1;
+
+    color: #f1dddd;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo {
+    width: min(270px, 75vw);
+
+    height: min(360px, 100vw);
+
+    object-fit: cover;
+
+    border-radius: 4px;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.65),
+        0 0 0 1px rgba(255,255,255,.15);
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    max-height: 65vh;
+
+    overflow-y: auto;
+
+    text-align: left;
+
+    padding: 35px;
+
+    background:
+        rgba(10,8,8,.48);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 5px;
+}
+
+.letter p {
+    color: #ddd;
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    margin-bottom: 20px;
+}
+
+.signature {
+    margin-top: 30px;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 28px;
+
+    color: #edcaca;
+
+    text-align: right;
+}
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+    font-size: 25px;
+
+    color: #e5bebe;
+
+    margin-bottom: 25px;
+
+    animation:
+        heartbeat 2s infinite;
+}
+
+.final-heart {
+    font-size: 60px;
+
+    color: #e9bebe;
+
+    animation:
+        heartbeat 2s infinite,
+        glow 2s infinite;
+}
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.next {
+    position: fixed;
+
+    bottom: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        13px 28px;
+
+    border:
+        1px solid rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(10px);
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    z-index: 20;
+}
+
+.next:hover {
+    background:
+        rgba(255,255,255,.2);
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music {
+    position: fixed;
+
+    top: 25px;
+
+    right: 25px;
+
+    z-index: 30;
+}
+
+.music button {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    background:
+        rgba(0,0,0,.25);
+
+    color: white;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(10px);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress {
+    position: fixed;
+
+    top: 25px;
+
+    left: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    z-index: 30;
+}
+
+/* =========================
+   CHOICE BUTTONS
+========================= */
+
+.choice-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+    min-height: 140px;
+}
+
+.yes-button,
+.no-button {
+    padding:
+        14px 25px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    background:
+        rgba(255,255,255,.1);
+
+    color: white;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease,
+        background .3s ease;
+}
+
+.yes-button:hover {
+    background:
+        rgba(220,170,170,.3);
+}
+
+.no-button {
+    position: relative;
+}
+
+.hint {
+    margin-top: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    transition: .3s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px transparent;
+    }
+
+    50% {
+        text-shadow:
+            0 0 30px
+            rgba(255,180,180,.7);
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .slide {
+        padding: 25px;
+    }
+
+    .letter {
+        padding: 25px;
+
+        max-height: 60vh;
+    }
+
+    .next {
+        bottom: 25px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+    <div
+        class="background"
+        id="background">
+    </div>
+
+    <div class="grain"></div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+
+        <span id="current">
+            01
+        </span>
+
+        /
+
+        <span id="total">
+            09
+        </span>
+
+    </div>
+
+
+    <!-- MUSIC -->
+
+    <div class="music">
+
+        <button
+            onclick="toggleMusic()"
+            id="musicButton">
+
+            ♫
+
+        </button>
+
+    </div>
+
+
+    <!-- ======================
+         SLIDE 1
+    ======================= -->
+
+    <section class="slide active">
+
+        <div class="content">
+
+            <div class="heart">
+                ♡
+            </div>
+
+            <div class="eyebrow">
+                a little something for you
+            </div>
+
+            <h1>
+                Cantiik.
+            </h1>
+
+            <p class="text">
+
+                sebelum kamu lanjut...
+
+                <br>
+
+                aku cuma mau kamu tahu,
+
+                <br>
+
+                ini semuanya aku buat
+                untuk kamu.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 2
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <img
+                src="foto1.jpg"
+                class="photo"
+            >
+
+            <div class="eyebrow">
+                you
+            </div>
+
+            <div class="big-text">
+
+                entah kenapa,
+
+                <br>
+
+                kamu selalu punya
+                tempat spesial
+
+                <br>
+
+                di hati aku.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 3
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                honestly...
+            </div>
+
+            <h2>
+
+                Aku sayang
+                <br>
+                banget sama kamu.
+
+            </h2>
+
+            <p class="text">
+
+                Mungkin aku nggak selalu
+                pandai menunjukkan semuanya.
+
+                <br><br>
+
+                Tapi rasa sayang itu
+                benar-benar ada.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 4
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <div class="heart">
+                ♡
+            </div>
+
+            <div class="eyebrow">
+                but first...
+            </div>
+
+            <h2>
+
+                Aku mau
+                <br>
+                bilang sesuatu.
+
+            </h2>
+
+            <div class="big-text">
+
+                Maaf.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 5
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <div class="letter">
+
+                <div class="eyebrow">
+                    for cantiik
+                </div>
+
+                <h2>
+                    I'm sorry.
+                </h2>
+
+                <p>
+
+                    Cantiik, aku tahu kemarin
+                    ada hal yang membuat kamu
+                    terluka dan sakit hati.
+
+                </p>
+
+                <p>
+
+                    Aku benar-benar minta maaf.
+
+                    Aku nggak mau mencari alasan
+                    atau membenarkan apa yang
+                    sudah aku lakukan.
+
+                </p>
+
+                <p>
+
+                    Aku cuma ingin kamu tahu
+                    bahwa aku menyesal sudah
+                    membuat hati kamu sakit.
+
+                </p>
+
+                <p>
+
+                    Kamu adalah seseorang yang
+                    sangat berarti buat aku.
+
+                </p>
+
+                <div class="signature">
+
+                    maafin aku ya, Cantiik ♡
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 6
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <img
+                src="foto2.jpg"
+                class="photo"
+            >
+
+            <div class="eyebrow">
+                one thing never changes
+            </div>
+
+            <div class="big-text">
+
+                Aku tetap
+
+                <br>
+
+                sayang kamu.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 7
+    ======================= -->
+
+    <section class="slide choice-slide">
+
+        <div class="content">
+
+            <div class="heart">
+                ♡
+            </div>
+
+            <div class="eyebrow">
+                satu pertanyaan
+            </div>
+
+            <h2>
+
+                Kamu masih
+                <br>
+                sayang aku?
+
+            </h2>
+
+
+            <div class="choice-buttons">
+
+
+                <button
+                    class="yes-button"
+                    id="yesButton"
+                    onclick="yesAnswer()">
+
+                    IYA, SAYANG ♡
+
+                </button>
+
+
+                <button
+                    class="no-button"
+                    id="noButton"
+                    onclick="moveNoButton()">
+
+                    NGGAK
+
+                </button>
+
+
+            </div>
+
+
+            <p
+                class="hint"
+                id="hint">
+
+                pilih yang jujur ya...
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 8
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <div class="eyebrow">
+                if you let me
+            </div>
+
+            <h2>
+
+                Aku ingin
+                <br>
+                memperbaikinya.
+
+            </h2>
+
+            <p class="text">
+
+                Bukan cuma lewat kata-kata.
+
+                <br><br>
+
+                Tapi lewat bagaimana aku
+                memperlakukan kamu setelah ini.
+
+                <br><br>
+
+                Pelan-pelan.
+                Satu per satu.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================
+         SLIDE 9
+    ======================= -->
+
+    <section class="slide">
+
+        <div class="content">
+
+            <div class="final-heart">
+                ♡
+            </div>
+
+            <div
+                class="eyebrow"
+                style="margin-top:30px;">
+
+                for you, always
+
+            </div>
+
+            <div class="big-text">
+
+                Aku mungkin nggak
+                <br>
+                sempurna.
+
+                <br><br>
+
+                Tapi aku sayang
+                <br>
+                sama kamu.
+
+            </div>
+
+            <p
+                class="text"
+                style="margin-top:30px;">
+
+                I love you, Cantiik.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEXT -->
+
+    <button
+        class="next"
+        onclick="nextSlide()"
+        id="nextButton">
+
+        NEXT →
+
+    </button>
+
+
+</div>
+
+
+<!-- AUDIO -->
+
+<audio
+    id="music"
+    loop>
+
+    <source
+        src="lagu.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<script>
+
+/* =========================
+   SLIDE SYSTEM
+========================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const background =
+    document.getElementById("background");
+
+const current =
+    document.getElementById("current");
+
+const total =
+    document.getElementById("total");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+let currentSlide = 0;
+
+
+/* FOTO BACKGROUND */
+
+const backgrounds = [
+
+    "foto1.jpg",
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto2.jpg",
+    "foto2.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto3.jpg",
+    "foto3.jpg"
+
+];
+
+
+total.textContent =
+    String(slides.length)
+        .padStart(2, "0");
+
+
+function showSlide(index) {
+
+
+    slides.forEach(
+        (slide, i) => {
+
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
+
+        }
+    );
+
+
+    /* BACKGROUND */
+
+    background.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+        background.style.backgroundImage = `
+
+            linear-gradient(
+                rgba(0,0,0,.45),
+                rgba(0,0,0,.78)
+            ),
+
+            url("${backgrounds[index]}")
+
+        `;
+
+        background.style.opacity = "1";
+
+    }, 350);
+
+
+    /* NUMBER */
+
+    current.textContent =
+        String(index + 1)
+            .padStart(2, "0");
+
+
+    /* LAST SLIDE */
+
+    if (
+        index ===
+        slides.length - 1
+    ) {
+
+        nextButton.innerHTML =
+            "RESTART ↻";
+
+    } else {
+
+        nextButton.innerHTML =
+            "NEXT →";
+
+    }
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+let musicStarted = false;
+
+
+function startMusic() {
+
+    if (musicStarted) {
+        return;
+    }
+
+
+    music.play()
+
+        .then(() => {
+
+            musicStarted = true;
+
+            musicButton.innerHTML =
+                "❚❚";
+
+        })
+
+        .catch(() => {
+
+            console.log(
+                "Browser memblokir autoplay."
+            );
+
+        });
+
+}
+
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play();
+
+        musicButton.innerHTML =
+            "❚❚";
+
+        musicStarted = true;
+
+    } else {
+
+        music.pause();
+
+        musicButton.innerHTML =
+            "♫";
+
+    }
+
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+function nextSlide() {
+
+    /*
+       Interaksi pertama
+       menyalakan musik.
+    */
+
+    startMusic();
+
+
+    if (
+        currentSlide <
+        slides.length - 1
+    ) {
+
+        currentSlide++;
+
+        showSlide(
+            currentSlide
+        );
+
+    } else {
+
+        currentSlide = 0;
+
+        showSlide(
+            currentSlide
+        );
+
+    }
+
+}
+
+
+/* =========================
+   YES / NO
+========================= */
+
+let noScale = 1;
+
+let yesScale = 1;
+
+let noClicks = 0;
+
+
+function moveNoButton() {
+
+    const noButton =
+        document.getElementById(
+            "noButton"
+        );
+
+    const yesButton =
+        document.getElementById(
+            "yesButton"
+        );
+
+    const hint =
+        document.getElementById(
+            "hint"
+        );
+
+
+    noClicks++;
+
+
+    /* NGGAK MENGECIL */
+
+    noScale -= 0.18;
+
+
+    if (noScale < 0.1) {
+
+        noScale = 0.1;
+
+    }
+
+
+    noButton.style.transform =
+        `scale(${noScale})`;
+
+
+    /* IYA MEMBESAR */
+
+    yesScale += 0.12;
+
+
+    if (yesScale > 1.8) {
+
+        yesScale = 1.8;
+
+    }
+
+
+    yesButton.style.transform =
+        `scale(${yesScale})`;
+
+
+    /* TEXT BERUBAH */
+
+    if (noClicks === 1) {
+
+        noButton.innerHTML =
+            "YAKIN?";
+
+        hint.innerHTML =
+            "beneran mau pilih nggak? 🥺";
+
+    }
+
+
+    else if (noClicks === 2) {
+
+        noButton.innerHTML =
+            "SERIUS?";
+
+        hint.innerHTML =
+            "coba pikir lagi...";
+
+    }
+
+
+    else if (noClicks === 3) {
+
+        noButton.innerHTML =
+            "BOHONG 😭";
+
+        hint.innerHTML =
+            "aku tahu kamu sayang aku.";
+
+    }
+
+
+    else if (noClicks === 4) {
+
+        noButton.innerHTML =
+            "JANGAN 😭";
+
+        hint.innerHTML =
+            "tombolnya juga udah takut.";
+
+    }
+
+
+    else {
+
+        noButton.innerHTML =
+            "NGGAK";
+
+        hint.innerHTML =
+            "udah tinggal pilih yang gede itu ♡";
+
+    }
+
+}
+
+
+/* =========================
+   YES
+========================= */
+
+function yesAnswer() {
+
+    const hint =
+        document.getElementById(
+            "hint"
+        );
+
+
+    hint.innerHTML =
+        "hehe... aku tahu kok ♡";
+
+
+    startMusic();
+
+
+    setTimeout(() => {
+
+        nextSlide();
+
+    }, 800);
+
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key === " "
+        ) {
+
+            nextSlide();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
