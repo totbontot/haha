@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+
+  background:
+    radial-gradient(circle at top, #ffdce9, transparent 40%),
+    linear-gradient(135deg, #fff0f5, #ffd6e5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  color: #5a2940;
+}
+
+
+/* CONTAINER */
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+
+/* SLIDE */
+
+.slide {
+  display: none;
+  animation: fadeIn 0.7s ease;
+}
+
+.slide.active {
+  display: block;
+}
+
+
+/* CARD */
+
+.card {
+  background: rgba(255,255,255,0.82);
+
+  backdrop-filter: blur(15px);
+
+  border-radius: 30px;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(180, 80, 120, 0.18);
+
+  border: 1px solid rgba(255,255,255,0.7);
+}
+
+
+/* EMOJI */
+
+.emoji {
+  font-size: 55px;
+  margin-bottom: 15px;
+
+  animation: floating 3s ease-in-out infinite;
+}
+
+
+/* TEXT */
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+
+  color: #b83268;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+
+  margin-bottom: 30px;
+
+  color: #805268;
+}
+
+.card p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+
+/* BUTTON */
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  position: relative;
+}
+
+.choice {
+  border: none;
+
+  padding: 15px 25px;
+
+  border-radius: 50px;
+
+  background: #ff7eaa;
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(220, 70, 120, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    font-size 0.3s ease;
+}
+
+.choice:hover {
+  transform: translateY(-3px);
+  background: #ef5d91;
+}
+
+
+/* TOMBOL UMMI */
+
+.ummi {
+  position: relative;
+}
+
+
+/* PETUNJUK */
+
+#hint {
+  min-height: 25px;
+
+  margin-top: 20px;
+
+  color: #c34a78;
+
+  font-size: 14px;
+}
+
+
+/* HEART */
+
+.big-heart {
+  font-size: 70px;
+
+  margin-top: 25px;
+
+  animation: heartbeat 1.5s infinite;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes floating {
+
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+
+@keyframes heartbeat {
+
+  0%,100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+
+  .card {
+    padding: 35px 22px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+}
