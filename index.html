@@ -1,115 +1,76 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Untuk Kamu ❤️</title>
+  <title>For You.</title>
+  <meta
+    name="description"
+    content="A little something, made just for you."
+  />
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <div class="hearts"></div>
-
   <main class="container">
 
-    <!-- SLIDE 1 -->
-    <section class="slide active" id="slide1">
+    <div class="top">
+      <span class="mono">01 / 01</span>
+      <span class="mono">for you</span>
+    </div>
 
-      <div class="card">
+    <section class="hero">
+      <p class="eyebrow">a small confession</p>
 
-        <div class="emoji">💗</div>
+      <h1>
+        I love
+        <span>you.</span>
+      </h1>
 
-        <h1>Mau dipanggil apa?</h1>
+      <div class="line"></div>
 
-        <p class="subtitle">
-          Aku harus tahu dulu nih...
-          biar nggak salah manggil orang kesayangan 😌
-        </p>
+      <p class="message">
+        Nothing complicated.<br />
+        Nothing dramatic.<br />
+        Just something I've been meaning to say.
+      </p>
 
-        <div class="buttons">
-
-          <button class="choice" onclick="nextSlide('sayang')">
-            Sayang 💕
-          </button>
-
-          <button class="choice" onclick="nextSlide('cantik')">
-            Cantik 🌷
-          </button>
-
-          <button
-            class="choice ummi"
-            id="ummiButton"
-            onclick="ummiClicked()">
-            Ummi 🥰
-          </button>
-
-        </div>
-
-        <p id="hint"></p>
-
-      </div>
-
+      <button id="reveal">
+        <span>read the rest</span>
+        <span class="arrow">↗</span>
+      </button>
     </section>
 
+    <section class="hidden-message" id="message">
+      <p class="quote">
+        "Somehow, out of all the people in the world,
+        I'm really glad I found you."
+      </p>
 
-    <!-- SLIDE SAYANG -->
-    <section class="slide" id="sayangSlide">
-
-      <div class="card">
-
-        <div class="emoji">💖</div>
-
-        <h1>Sayang...</h1>
-
-        <p>
-          Entah kenapa kata itu terasa sederhana,
-          tapi kalau ditujukan ke kamu rasanya jadi berbeda.
-        </p>
-
-        <p>
-          Mungkin karena memang ada seseorang
-          yang berhasil membuat kata sederhana
-          terasa begitu berarti.
-        </p>
-
-        <div class="big-heart">❤️</div>
-
+      <div class="signature">
+        <span>— with love</span>
       </div>
-
     </section>
 
-
-    <!-- SLIDE CANTIK -->
-    <section class="slide" id="cantikSlide">
-
-      <div class="card">
-
-        <div class="emoji">🌷</div>
-
-        <h1>Cantik...</h1>
-
-        <p>
-          Sebenarnya kamu nggak perlu dipanggil cantik
-          supaya terlihat cantik.
-        </p>
-
-        <p>
-          Kamu cukup jadi diri kamu sendiri.
-          Sisanya biar aku yang diam-diam mengagumi.
-        </p>
-
-        <div class="big-heart">💗</div>
-
-      </div>
-
-    </section>
+    <footer>
+      <span class="mono">made with intention</span>
+      <span class="mono">© 2026</span>
+    </footer>
 
   </main>
 
-  <script src="script.js"></script>
+  <div class="grain"></div>
 
+  <script src="script.js"></script>
 </body>
 </html>
