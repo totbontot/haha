@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>For You.</title>
   <meta
-    name="description"
-    content="A little something, made just for you."
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   />
+
+  <meta name="theme-color" content="#080808" />
+
+  <title>Something for you.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -22,55 +24,123 @@
 
 <body>
 
-  <main class="container">
+  <!-- Ambient background -->
+  <div class="ambient"></div>
+  <div class="noise"></div>
 
-    <div class="top">
-      <span class="mono">01 / 01</span>
-      <span class="mono">for you</span>
-    </div>
+  <!-- Cursor / touch glow -->
+  <div class="pointer-glow"></div>
 
-    <section class="hero">
-      <p class="eyebrow">a small confession</p>
+  <main id="app">
 
-      <h1>
-        I love
-        <span>you.</span>
-      </h1>
+    <!-- INTRO -->
+    <section class="screen intro active" id="intro">
 
-      <div class="line"></div>
+      <div class="top-bar">
+        <span>01</span>
+        <span>for someone</span>
+      </div>
 
-      <p class="message">
-        Nothing complicated.<br />
-        Nothing dramatic.<br />
-        Just something I've been meaning to say.
-      </p>
+      <div class="intro-content">
 
-      <button id="reveal">
-        <span>read the rest</span>
-        <span class="arrow">↗</span>
-      </button>
+        <p class="eyebrow">a little experiment</p>
+
+        <h1>
+          I made<br />
+          <em>something.</em>
+        </h1>
+
+        <p class="subtext">
+          It's not much.<br />
+          But it's meant for you.
+        </p>
+
+        <button class="start-btn" id="startBtn">
+          <span>open</span>
+          <span>↗</span>
+        </button>
+
+      </div>
+
+      <div class="bottom-bar">
+        <span>tap to begin</span>
+        <span>2026</span>
+      </div>
+
     </section>
 
-    <section class="hidden-message" id="message">
-      <p class="quote">
-        "Somehow, out of all the people in the world,
-        I'm really glad I found you."
-      </p>
+
+    <!-- JOURNEY -->
+    <section class="screen journey" id="journey">
+
+      <div class="progress">
+        <div class="progress-fill"></div>
+      </div>
+
+      <div class="counter">
+        <span id="stepNumber">01</span>
+        <span>/ 04</span>
+      </div>
+
+      <div class="journey-content">
+
+        <p class="eyebrow" id="journeyEyebrow">
+          honestly
+        </p>
+
+        <div class="statement" id="statement">
+          <span>Some people</span>
+          <span>just make</span>
+          <span>ordinary days</span>
+          <span>feel different.</span>
+        </div>
+
+        <button class="next-btn" id="nextBtn">
+          <span id="nextText">continue</span>
+          <span>→</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="screen final" id="final">
+
+      <div class="final-orbit"></div>
+
+      <div class="final-content">
+
+        <p class="eyebrow">and that's all</p>
+
+        <div class="final-title">
+          <span>I</span>
+          <span class="accent">love</span>
+          <span>you.</span>
+        </div>
+
+        <p class="final-copy">
+          No grand explanation.<br />
+          No perfect words.<br /><br />
+          Just the truth.
+        </p>
+
+        <button class="replay-btn" id="replayBtn">
+          start over
+        </button>
+
+      </div>
 
       <div class="signature">
-        <span>— with love</span>
+        made with intention.
       </div>
-    </section>
 
-    <footer>
-      <span class="mono">made with intention</span>
-      <span class="mono">© 2026</span>
-    </footer>
+    </section>
 
   </main>
 
-  <div class="grain"></div>
-
   <script src="script.js"></script>
+
 </body>
 </html>
